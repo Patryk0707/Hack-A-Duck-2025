@@ -18,7 +18,7 @@ morse_dictionary = {
 }
 
 x = []
-
+finalWord = []
 def on_press(key):
     global startTime, pressed
     if key == keyboard.Key.space and not pressed:
@@ -46,14 +46,20 @@ def on_release(key):
     if key == keyboard.Key.esc:# Stop listener
         for key, value in morse_dictionary.items():
             if value == letter:
+                x.clear()
+                finalWord.append(key)
                 print(key)
                 break
-            else:
-                print("oops")
-                break
         return False
-
-with keyboard.Listener(
-        on_press = on_press,
-        on_release = on_release) as listener:
-    listener.join()
+z = 0
+while z == 0:
+    goAgain = input("Another letter? (Y/N)")
+    if goAgain == "y":
+        z = 0
+    else:
+        z = 1
+        print(finalWord)
+    with keyboard.Listener(
+            on_press = on_press,
+            on_release = on_release) as listener:
+        listener.join()
