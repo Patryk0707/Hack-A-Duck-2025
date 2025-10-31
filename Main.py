@@ -51,15 +51,21 @@ def on_release(key):
                 print(key)
                 break
         return False
-z = 0
+choice = input(f"Do you want to 1.) Translate English to Morse Code 2.) Translate Morse Code to English")
+if choice == "1":
+    print("")
+elif choice == "2":
+    z = 0
 while z == 0:
     goAgain = input("Another letter? (Y/N)")
     if goAgain == "y":
         z = 0
     else:
         z = 1
-        print(finalWord)
+        print(''.join(finalWord))
     with keyboard.Listener(
             on_press = on_press,
             on_release = on_release) as listener:
         listener.join()
+else:
+    print("Please enter a valid selection")
