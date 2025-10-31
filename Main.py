@@ -42,9 +42,14 @@ def on_release(key):
         print(letter)
         pressed = False
         startTime = 0
-    if key == keyboard.Key.esc:
-        # Stop listener
-        return False
+        if key == keyboard.Key.esc:# Stop listener
+            return False
+
+for key, value in morse_dictionary.items():
+    if value == letter:
+        print(key)
+    else:
+        print("oops")
 
         
 with keyboard.Listener(
