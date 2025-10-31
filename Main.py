@@ -17,8 +17,10 @@ morse_dictionary = {
     "y": "-.--", "z": "--.."
 }
 
+z = 0
 x = []
 finalWord = []
+finalTranslation = []
 def on_press(key):
     global startTime, pressed
     if key == keyboard.Key.space and not pressed:
@@ -38,8 +40,7 @@ def on_release(key):
             dotOrDash = "-"
             print(dotOrDash)
             x.append(dotOrDash)
-        #print(holdtime) used for testing to see optimal time spacebar needs to be pressed for morse code(. or _)
-        letter = ''.join(x)
+            letter = ''.join(x)
         print(letter)
         pressed = False
         startTime = 0
@@ -53,19 +54,20 @@ def on_release(key):
         return False
 choice = input(f"Do you want to 1.) Translate English to Morse Code 2.) Translate Morse Code to English")
 if choice == "1":
-    print("")
+    userText = str(input("What word would you like to translate"))
+    morse_code = "".join(morse_dictionary[letter] for letter in userText)
+    print(morse_code)
 elif choice == "2":
-    z = 0
-while z == 0:
-    goAgain = input("Another letter? (Y/N)")
-    if goAgain == "y":
-        z = 0
+    while z == 0:
+        goAgain = input("Another letter? (Y/N)")
+        if goAgain == "y":
+            z = 0
+        else:
+            z = 1
+            print(''.join(finalWord))
+        with keyboard.Listener(
+                on_press = on_press,
+                on_release = on_release) as listener:
+            listener.join()
     else:
-        z = 1
-        print(''.join(finalWord))
-    with keyboard.Listener(
-            on_press = on_press,
-            on_release = on_release) as listener:
-        listener.join()
-else:
-    print("Please enter a valid selection")
+        print("Please enter a valid selection")
