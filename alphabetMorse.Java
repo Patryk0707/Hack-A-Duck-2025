@@ -26,7 +26,5 @@ public class alphabetMorse {
     String x = "— • • —";
     String y = "— • — —";
     String z = "— — • • ";
-    
-    System.out.println(a);
   }
 }
