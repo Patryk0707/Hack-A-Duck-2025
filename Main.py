@@ -4,6 +4,7 @@ from time import perf_counter
 startTime = 0
 pressed = False
 morseVariable = 0
+letter=""
 morse_dictionary = {
     "a": ".-", "b": "-...", "c": "-.-.",
     "d": "-..", "e": ".", "f": "..-.",
@@ -25,7 +26,7 @@ def on_press(key):
         pressed = True
             
 def on_release(key):
-    global startTime, pressed, holdtime
+    global startTime, pressed, holdtime,letter
     if key == keyboard.Key.space and pressed:
         holdtime = perf_counter() - startTime
         morseVariable = holdtime
@@ -37,23 +38,22 @@ def on_release(key):
             dotOrDash = "-"
             print(dotOrDash)
             x.append(dotOrDash)
-        #print(holdtime)
+        #print(holdtime) used for testing to see optimal time spacebar needs to be pressed for morse code(. or _)
         letter = ''.join(x)
         print(letter)
         pressed = False
         startTime = 0
-        if key == keyboard.Key.esc:# Stop listener
-            return False
+    if key == keyboard.Key.esc:# Stop listener
+        for key, value in morse_dictionary.items():
+            if value == letter:
+                print(key)
+                break
+            else:
+                print("oops")
+                break
+        return False
 
-for key, value in morse_dictionary.items():
-    if value == letter:
-        print(key)
-    else:
-        print("oops")
-
-        
 with keyboard.Listener(
         on_press = on_press,
         on_release = on_release) as listener:
     listener.join()
-
