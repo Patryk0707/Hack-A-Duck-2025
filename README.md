@@ -1,2 +1,2 @@
 # Hack-A-Duck-2025
-This is our groups repository for Hack-A-Duck 2025 at Nottingham Trent University
+This is our group ("Its All Ogre") repository for Hack-A-Duck 2025 at Nottingham Trent University
