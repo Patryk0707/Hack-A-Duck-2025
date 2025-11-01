@@ -23,7 +23,7 @@ morse_dictionary = {
     "3": "...--", "4": "....-", "5": ".....",
     "6": "-....", "7": "--...", "8": "---..",
     "9": "----.",".": ".-.-.-",",": "--..--", "?": "..--.." 
-}# dictionary of letters translated to morsecode
+}# dictionary of letters,numbers and symbols translated to morse code
 
 z = 0
 x = []
