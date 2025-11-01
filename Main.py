@@ -7,7 +7,7 @@ pressed = False #if spacebar is pressed
 morseVariable = 0 #lenth of spacebar being pressed
 letter="" #letter variable used letter to store morsecode
 dotMs=140#length of the beep in ms for dot
-dashMs=70*3 #length of the beep in ms for dash
+dashMs=120*3 #length of the beep in ms for dash
 freq=800 #frequence of the beep
 wordDone=False
 morse_dictionary = {
@@ -22,7 +22,7 @@ morse_dictionary = {
     "y": "-.--", "z": "--..","0": "-----", "1": ".----", "2": "..---",
     "3": "...--", "4": "....-", "5": ".....",
     "6": "-....", "7": "--...", "8": "---..",
-    "9": "----.",".": ".-.-.-",",": "--..--", "?": "..--.." 
+    "9": "----.",".": ".-.-.-",",": "--..--", "?": "..--.."," ":"/"
 }# dictionary of letters,numbers and symbols translated to morse code
 
 z = 0
