@@ -9,6 +9,7 @@ letter="" #letter variable used letter to store morsecode
 dotMs=120#length of the beep in ms for dot
 dashMs=120*3 #length of the beep in ms for dash
 freq=800 #frequence of the beep
+wordDone=False
 morse_dictionary = {
     "a": ".-", "b": "-...", "c": "-.-.",
     "d": "-..", "e": ".", "f": "..-.",
@@ -33,7 +34,7 @@ def on_press(key):#when key(spacebar) is pressed it checks whether its the space
         pressed = True #updates pressed to be True
             
 def on_release(key): #when key(spacebar) is released and pressed is true, it subracts perf_counter() by startTime to get the time the spacebar was held
-    global startTime, pressed, holdtime,letter
+    global startTime, pressed, holdtime,letter,wordDone
     if key == keyboard.Key.space and pressed:
         holdtime = perf_counter() - startTime
         morseVariable = holdtime
@@ -66,8 +67,14 @@ def on_release(key): #when key(spacebar) is released and pressed is true, it sub
             elif i=="-":
                 winsound.Beep(freq,dashMs) #for every dash a longer beep is produced
             time.sleep(dotMs/1000.0)#between every letter a gap of silence is given
-        return False#returns false when its finished
-        
+        #return False returns false when its finished
+    elif key== keyboard.Key.enter:
+        if not x and not letter:
+            return
+        wordDone=True
+        pressed=False
+        startTime=0
+        return False
 choice = input(f"Do you want to 1.) Translate English to Morse Code 2.) Translate Morse Code to English? ")#gives user the choice whether they want to go from english to morse code or morse code to english
 while choice == "1":
     userText = str(input("What word would you like to translate? "))
@@ -75,7 +82,7 @@ while choice == "1":
     print(morse_code)#prints morse code equilevent
     for wordMorseCode in morse_code: #for every dot and dash in the morse code translation a shorter and longer beep is produced
         for s in wordMorseCode:
-            if s==".":
+            if s==".": 
                 winsound.Beep(freq,dotMs)
             elif s=="-":
                 winsound.Beep(freq,dashMs)
@@ -86,24 +93,25 @@ while choice == "1":
     else:
         choice="0"
 if choice == "2":
-    while z == 0: 
-        goAgain = input("Another letter? (Y/N)") #asks the user whether they want to add another letter
-        if goAgain == "y":
-            z = 0
-        else:#if user doesnt want to add another letter then the final word will be printed and the morse code will be sounded
-            z = 1
-            print(''.join(finalWord))
-            for wordMorseCode in y:
-                for s in wordMorseCode:
-                    if s==".":
-                        winsound.Beep(freq,dotMs)
-                    elif s=="-":
-                        winsound.Beep(freq,dashMs)
-                    time.sleep(dotMs/1000.0)
-            y.clear() #list is cleared
-        with keyboard.Listener(#starts to listen for spacebar presses
-                on_press = on_press,
-                on_release = on_release) as listener:
-            listener.join()
-    else:
-        print("Please enter a valid selection")
+        while z==0:
+            with keyboard.Listener(     #starts to listen for spacebar presses
+                    on_press = on_press,
+                    on_release = on_release) as listener:
+                listener.join()
+            if wordDone:
+                wordDone=False
+                print(''.join(finalWord))
+                for code in y:
+                    for s in code:
+                        if s == '.':
+                            winsound.Beep(freq,dotMs)
+                        elif s == '-':
+                            winsound.Beep(freq,dashMs)
+                        time.sleep(dotMs/1000.0)
+                x.clear();y.clear();finalWord.clear();letter="";pressed=False;startTime=0
+                _=input()
+                goAgain = input("Another Word? (Y/N)") #if user wants to go again z will be 0 meaning the loop will continue
+                if goAgain == "y" or goAgain == "yes":
+                    z=0
+                else:
+                    z=1
