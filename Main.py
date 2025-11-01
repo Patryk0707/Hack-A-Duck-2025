@@ -75,6 +75,7 @@ def on_release(key): #when key(spacebar) is released and pressed is true, it sub
         pressed=False
         startTime=0
         return False
+print("Welcome to the Morse Code Translator!")
 choice = input(f"Do you want to 1.) Translate English to Morse Code 2.) Translate Morse Code to English? ")#gives user the choice whether they want to go from english to morse code or morse code to english
 while choice == "1":
     userText = str(input("What word would you like to translate? "))
@@ -110,7 +111,7 @@ if choice == "2":
                         time.sleep(dotMs/1000.0)
                 x.clear();y.clear();finalWord.clear();letter="";pressed=False;startTime=0
                 _=input()
-                goAgain = input("Another Word? (Y/N)") #if user wants to go again z will be 0 meaning the loop will continue
+                goAgain = input("Another Word? (y/n)") #if user wants to go again z will be 0 meaning the loop will continue
                 if goAgain == "y" or goAgain == "yes":
                     z=0
                 else:
