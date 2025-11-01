@@ -69,7 +69,7 @@ def on_release(key): #when key(spacebar) is released and pressed is true, it sub
         return False#returns false when its finished
         
 choice = input(f"Do you want to 1.) Translate English to Morse Code 2.) Translate Morse Code to English? ")#gives user the choice whether they want to go from english to morse code or morse code to english
-if choice == "1":
+while choice == "1":
     userText = str(input("What word would you like to translate? "))
     morse_code = "".join(morse_dictionary[letter] for letter in userText)#it gets every letter in the word, checks where it is in the dictonary and gets the morse code equilevent
     print(morse_code)#prints morse code equilevent
@@ -80,7 +80,12 @@ if choice == "1":
             elif s=="-":
                 winsound.Beep(freq,dashMs)
             time.sleep(dotMs/1000.0)
-elif choice == "2":
+    enterAgain=input("want to translate another word into morse code? ")
+    if enterAgain == "y" or enterAgain == "yes":
+        choice="1"
+    else:
+        choice="0"
+if choice == "2":
     while z == 0: 
         goAgain = input("Another letter? (Y/N)") #asks the user whether they want to add another letter
         if goAgain == "y":
