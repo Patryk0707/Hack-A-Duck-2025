@@ -7,7 +7,7 @@ pressed = False #if spacebar is pressed
 morseVariable = 0 #lenth of spacebar being pressed
 letter="" #letter variable used letter to store morsecode
 dotMs=140#length of the beep in ms for dot
-dashMs=70*3 #length of the beep in ms for dash
+dashMs=120*3 #length of the beep in ms for dash
 freq=800 #frequence of the beep
 wordDone=False
 morse_dictionary = {
@@ -22,7 +22,7 @@ morse_dictionary = {
     "y": "-.--", "z": "--..","0": "-----", "1": ".----", "2": "..---",
     "3": "...--", "4": "....-", "5": ".....",
     "6": "-....", "7": "--...", "8": "---..",
-    "9": "----.",".": ".-.-.-",",": "--..--", "?": "..--.." 
+    "9": "----.",".": ".-.-.-",",": "--..--", "?": "..--.."," ":"/"
 }# dictionary of letters,numbers and symbols translated to morse code
 
 z = 0
@@ -82,6 +82,7 @@ print("Welcome to the Morse Code Translator!")
 choice = input(f"Do you want to 1.) Translate English to Morse Code 2.) Translate Morse Code to English? ")#gives user the choice whether they want to go from english to morse code or morse code to english
 while choice == "1":
     userText = str(input("What word would you like to translate? "))
+    userText=userText.lower()
     morse_code = "".join(morse_dictionary[letter] for letter in userText)#it gets every letter in the word, checks where it is in the dictonary and gets the morse code equilevent
     print(morse_code)#prints morse code equilevent
     for wordMorseCode in morse_code: #for every dot and dash in the morse code translation a shorter and longer beep is produced
