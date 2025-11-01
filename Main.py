@@ -6,8 +6,8 @@ startTime = 0 #start time of when spacebar was pressed
 pressed = False #if spacebar is pressed
 morseVariable = 0 #lenth of spacebar being pressed
 letter="" #letter variable used letter to store morsecode
-dotMs=120#length of the beep in ms for dot
-dashMs=120*3 #length of the beep in ms for dash
+dotMs=140#length of the beep in ms for dot
+dashMs=70*3 #length of the beep in ms for dash
 freq=800 #frequence of the beep
 wordDone=False
 morse_dictionary = {
@@ -69,7 +69,7 @@ def on_release(key): #when key(spacebar) is released and pressed is true, it sub
                 winsound.Beep(freq,dotMs) #for every dot a beep is produced that is short
             elif i=="-":
                 winsound.Beep(freq,dashMs) #for every dash a longer beep is produced
-            time.sleep(dotMs/1000.0)#between every letter a gap of silence is given
+            time.sleep(dotMs/500.0)#between every letter a gap of silence is given
         #return False returns false when its finished
     elif key== keyboard.Key.enter:
         if not x and not letter:
@@ -90,7 +90,7 @@ while choice == "1":
                 winsound.Beep(freq,dotMs)
             elif s=="-":
                 winsound.Beep(freq,dashMs)
-            time.sleep(dotMs/1000.0)
+            time.sleep(dotMs/500.0)
     enterAgain=input("want to translate another word into morse code? ")
     if enterAgain == "y" or enterAgain == "yes":
         choice="1"
@@ -111,7 +111,7 @@ if choice == "2":
                             winsound.Beep(freq,dotMs)
                         elif s == '-':
                             winsound.Beep(freq,dashMs)
-                        time.sleep(dotMs/1000.0)
+                        time.sleep(dotMs/500.0)
                 x.clear();y.clear();finalWord.clear();letter="";pressed=False;startTime=0
                 _=input()
                 goAgain = input("Another Word? (y/n)") #if user wants to go again z will be 0 meaning the loop will continue
