@@ -15,5 +15,8 @@ that does what we set out to do.
 In future I believe we can develop this program even further adding additional functionality that we were
 not able to fit into this 24 hour time span, regardless, a lot of effort has been put in, and this was a fun experience.
 
-Monsters Consumed = 8 (and 1 redbull)
 Code Rewrites = 1.5
+
+
+
+This program successfully transalates morse code into plain text and can transalate plain text into morsecode with there being sound for each dot and dash.
