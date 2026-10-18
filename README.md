@@ -1,22 +1,42 @@
-# Hack-A-Duck-2025
-This is our groups repository for Hack-A-Duck 2025 at Nottingham Trent University
+# Hack-A-Duck-2025-Morse Code Translator
+This Project was developed during the Hack-A-Duck Hackathon at Nottingham Trent University
 
-We are going to be developing an application that can be used to translate morse code,
-It will take inputs via the spacebar, and translate the "dots and dashes"
-into real plain-text.
+##Overview
 
-At 15:30 3 out of 5 members decided they no longer wanted to participate in the Hack-A-Duck Hackathon,
-they have been removed from the git repository as they did not finalise any code or add anything.
+The goal of the project is to create an application that is able to translate between morse code and plain text.
+The application allows users to input Morse code using the spacebar with the duration of each key press determining whether the input is interpreted as a dot or a dash. The generated morse code is then translated into plain text.
 
-This Hack-A-Thon has been a great experience for us, we have visualsed and then finalised a program from
-its inception, and despite difficulties of lack of members, we managed to pull through and create a program
-that does what we set out to do.
+The program can also translate plain text into morse code and provides audio feedback for dots and dashes
 
-In future I believe we can develop this program even further adding additional functionality that we were
-not able to fit into this 24 hour time span, regardless, a lot of effort has been put in, and this was a fun experience.
+##Features
 
-Code Rewrites = 1.5
+Translate Morse Code into plain text
+Translate plain text into morse code
+Spacebar-based morse code input
+Timed key presses to determine either a dot or dash
+Audio playback for morse code
+Support for letters,numbers,punctuation
+
+##Technologies Used
+
+-Python
+-Pynput
+-Winsound
+-Python time and perf_counter
+
+##Hackathon Experience
+
+This project was created within a 24-hour hackathon.
+
+During the event our team faced unexpected challenges after 3 out of 5 members were unable to continue participating. Despite the reduced team size we were able to complete the application and achieve the main functionality as originally planned.
+
+The experience helped us develop our problem-solving, teamwork and time-management skills while working under a strict deadline.
+
+##future improvements
+With more development time, this project could be expanded with features such as:
+-A graphical user interface
+-Improved morse code audio playback
+-Support for full sentences and word spacing rather than having to enter them one by one.
+-Improved error handling
 
 
-
-This program successfully transalates morse code into plain text and can transalate plain text into morsecode with there being sound for each dot and dash.

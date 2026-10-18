@@ -4,11 +4,11 @@ import winsound,time
 # Collect events until released
 startTime = 0 #start time of when spacebar was pressed
 pressed = False #if spacebar is pressed
-morseVariable = 0 #lenth of spacebar being pressed
-letter="" #letter variable used letter to store morsecode
+morseVariable = 0 #length of spacebar being pressed
+letter="" #letter variable used letter to store morse code
 dotMs=140#length of the beep in ms for dot
 dashMs=120*3 #length of the beep in ms for dash
-freq=800 #frequence of the beep
+freq=800 #frequency of the beep
 wordDone=False
 morse_dictionary = {
     "a": ".-", "b": "-...", "c": "-.-.",
@@ -29,14 +29,13 @@ z = 0
 x = []
 y=[]
 finalWord = [] #final word being printed at the end
-finalTranslation = []
-def on_press(key):#when key(spacebar) is pressed it checks whether its the spacebar and that it hasnt been pressed yet.
+def on_press(key):#when key(spacebar) is pressed it checks whether its the spacebar and that it hasn't been pressed yet.
     global startTime, pressed #global variables used
     if key == keyboard.Key.space and not pressed:
         startTime = perf_counter() #starts the timer since the button has been pressed
         pressed = True #updates pressed to be True
             
-def on_release(key): #when key(spacebar) is released and pressed is true, it subracts perf_counter() by startTime to get the time the spacebar was held
+def on_release(key): #when key(spacebar) is released and pressed is true, it subtracts perf_counter() by startTime to get the time the spacebar was held
     global startTime, pressed, holdtime,letter,wordDone
     if key == keyboard.Key.space and pressed:
         holdtime = perf_counter() - startTime
@@ -45,20 +44,20 @@ def on_release(key): #when key(spacebar) is released and pressed is true, it sub
             dotOrDash = "."
             print(dotOrDash)
             x.append(dotOrDash)#adds the dot into the list called x
-            letter = ''.join(x)   #morsecode is added into variable called letter
+            letter = ''.join(x)   #morse code is added into variable called letter
             winsound.Beep(freq,dotMs)#when its a dot it makes a beep sound that uses freq and dotMs to know how long the frequency and length of the sound is
         elif morseVariable >= 0.25: #if spacebar is held for more than or equal to 0.25 seconds then a "-" is assigned and printed
             dotOrDash = "-" 
             print(dotOrDash)
             x.append(dotOrDash)#adds the dash into the list called x
-            letter = ''.join(x)#morsecode is added into variable called letter
+            letter = ''.join(x)#morse code is added into variable called letter
             winsound.Beep(freq,dashMs)#when its a dash it makes a longer beep sound that uses freq and dashMs to know how long the frequency and length of the sound is
         print(letter)
         pressed = False #pressed goes back to False
         startTime = 0 #resets startTime
-    if key == keyboard.Key.esc:#pressing escape will then get the code to compare the morse code generated to the dictionary to see what letter its equilevent to
-        for key, value in morse_dictionary.items():#uses the morse dictionary for a comparision to see what letter the morse code is 
-            if value == letter:  #if the morse code matches any morsecode in the dictionary then that letter will be added to final world
+    if key == keyboard.Key.esc:#pressing escape will then get the code to compare the morse code generated to the dictionary to see what letter its equivalent to
+        for key, value in morse_dictionary.items():#uses the morse dictionary for a comparison to see what letter the morse code is 
+            if value == letter:  #if the morse code matches any morse code in the dictionary then that letter will be added to final world
                 y.append(letter) #letter is stored in y
                 x.clear() #x is cleared for a new entry
                 finalWord.append(key) #letter is stored 
@@ -83,8 +82,8 @@ choice = input(f"Do you want to 1.) Translate English to Morse Code 2.) Translat
 while choice == "1":
     userText = str(input("What word would you like to translate? "))
     userText=userText.lower()
-    morse_code = "".join(morse_dictionary[letter] for letter in userText)#it gets every letter in the word, checks where it is in the dictonary and gets the morse code equilevent
-    print(morse_code)#prints morse code equilevent
+    morse_code = "".join(morse_dictionary[letter] for letter in userText)#it gets every letter in the word, checks where it is in the dictionary and gets the morse code equivalent
+    print(morse_code)#prints morse code equivalent
     for wordMorseCode in morse_code: #for every dot and dash in the morse code translation a shorter and longer beep is produced
         for s in wordMorseCode:
             if s==".": 
